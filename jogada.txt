@@ -1,3 +1,6 @@
+& PEDRO
+& FELIPE
+
 # Ace e vitoria do jogador sacando
 % SAQUE(aberto,medio)
 % MARCAR_PONTO

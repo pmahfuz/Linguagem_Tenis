@@ -14,6 +14,7 @@ LETTER [a-zA-Z]
 "\n" { printf("BREAKLINE\n"); return BREAKLINE; }
 "#" { printf("Token Identified: TITULO\n"); return TITULO; }
 "%" { printf("Token Identified: ACAO\n"); return ACAO; }
+"&" { printf("Token Identified: VARIAVEL \n"); return VARIAVEL; }
 "(" { printf("Token Identified: LEFT PARENTHESIS\n"); return LEFT_PARENTHESIS; }
 ")" { printf("Token Identified: RIGHT PARENTHESIS\n"); return RIGHT_PARENTHESIS; }
 "," { printf("Token Identified: COMMA\n"); return COMMA; }

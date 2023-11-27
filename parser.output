@@ -5,26 +5,30 @@ Terminals unused in grammar
 
 Grammar
 
-    0 $accept: game $end
+    0 $accept: player $end
 
-    1 game: point BREAKLINE
+    1 player: VARIAVEL SPACE WORD BREAKLINE secondplayer BREAKLINE game
 
-    2 point: header BREAKLINE dispute BREAKLINE point
-    3      | ACAO SPACE FINALIZAR
+    2 secondplayer: VARIAVEL SPACE WORD BREAKLINE
 
-    4 header: TITULO SPACE title_line
+    3 game: point BREAKLINE
 
-    5 title_line: title
-    6           | title_line SPACE title
+    4 point: header BREAKLINE dispute BREAKLINE point
+    5      | ACAO SPACE FINALIZAR
 
-    7 title: WORD
+    6 header: TITULO SPACE title_line
 
-    8 dispute: ACAO SPACE action
+    7 title_line: title
+    8           | title_line SPACE title
 
-    9 action: SAQUE LEFT_PARENTHESIS TIPO COMMA FORCA RIGHT_PARENTHESIS BREAKLINE dispute
-   10       | REBATER LEFT_PARENTHESIS DIRECAO COMMA FORCA RIGHT_PARENTHESIS BREAKLINE dispute
-   11       | CORRER LEFT_PARENTHESIS DIRECAO RIGHT_PARENTHESIS BREAKLINE dispute
-   12       | MARCAR_PONTO BREAKLINE
+    9 title: WORD
+
+   10 dispute: ACAO SPACE action
+
+   11 action: SAQUE LEFT_PARENTHESIS TIPO COMMA FORCA RIGHT_PARENTHESIS BREAKLINE dispute
+   12       | REBATER LEFT_PARENTHESIS DIRECAO COMMA FORCA RIGHT_PARENTHESIS BREAKLINE dispute
+   13       | CORRER LEFT_PARENTHESIS DIRECAO RIGHT_PARENTHESIS BREAKLINE dispute
+   14       | MARCAR_PONTO BREAKLINE
 
 
 Terminals, with rules where they appear
@@ -32,405 +36,493 @@ Terminals, with rules where they appear
     $end (0) 0
     error (256)
     STRING (258)
-    WORD (259) 7
-    TITULO (260) 4
-    LEFT_PARENTHESIS (261) 9 10 11
-    RIGHT_PARENTHESIS (262) 9 10 11
-    SAQUE (263) 9
-    REBATER (264) 10
-    CORRER (265) 11
-    MARCAR_PONTO (266) 12
-    FINALIZAR (267) 3
-    TIPO (268) 9
-    DIRECAO (269) 10 11
-    BREAKLINE (270) 1 2 9 10 11 12
-    SPACE (271) 3 4 6 8
-    COMMA (272) 9 10
-    ACAO (273) 3 8
-    FORCA (274) 9 10
+    WORD (259) 1 2 9
+    TITULO (260) 6
+    LEFT_PARENTHESIS (261) 11 12 13
+    RIGHT_PARENTHESIS (262) 11 12 13
+    SAQUE (263) 11
+    REBATER (264) 12
+    CORRER (265) 13
+    MARCAR_PONTO (266) 14
+    FINALIZAR (267) 5
+    TIPO (268) 11
+    DIRECAO (269) 12 13
+    BREAKLINE (270) 1 2 3 4 11 12 13 14
+    SPACE (271) 1 2 5 6 8 10
+    COMMA (272) 11 12
+    ACAO (273) 5 10
+    FORCA (274) 11 12
+    VARIAVEL (275) 1 2
 
 
 Nonterminals, with rules where they appear
 
-    $accept (20)
+    $accept (21)
         on left: 0
-    game (21)
+    player (22)
         on left: 1
         on right: 0
-    point (22)
-        on left: 2 3
-        on right: 1 2
-    header (23)
-        on left: 4
-        on right: 2
-    title_line (24)
-        on left: 5 6
-        on right: 4 6
-    title (25)
-        on left: 7
-        on right: 5 6
-    dispute (26)
-        on left: 8
-        on right: 2 9 10 11
-    action (27)
-        on left: 9 10 11 12
-        on right: 8
+    secondplayer (23)
+        on left: 2
+        on right: 1
+    game (24)
+        on left: 3
+        on right: 1
+    point (25)
+        on left: 4 5
+        on right: 3 4
+    header (26)
+        on left: 6
+        on right: 4
+    title_line (27)
+        on left: 7 8
+        on right: 6 8
+    title (28)
+        on left: 9
+        on right: 7 8
+    dispute (29)
+        on left: 10
+        on right: 4 11 12 13
+    action (30)
+        on left: 11 12 13 14
+        on right: 10
 
 
 State 0
 
-    0 $accept: . game $end
+    0 $accept: . player $end
 
-    TITULO  shift, and go to state 1
-    ACAO    shift, and go to state 2
+    VARIAVEL  shift, and go to state 1
 
-    game    go to state 3
-    point   go to state 4
-    header  go to state 5
+    player  go to state 2
 
 
 State 1
 
-    4 header: TITULO . SPACE title_line
+    1 player: VARIAVEL . SPACE WORD BREAKLINE secondplayer BREAKLINE game
 
-    SPACE  shift, and go to state 6
+    SPACE  shift, and go to state 3
 
 
 State 2
 
-    3 point: ACAO . SPACE FINALIZAR
+    0 $accept: player . $end
 
-    SPACE  shift, and go to state 7
+    $end  shift, and go to state 4
 
 
 State 3
 
-    0 $accept: game . $end
+    1 player: VARIAVEL SPACE . WORD BREAKLINE secondplayer BREAKLINE game
 
-    $end  shift, and go to state 8
+    WORD  shift, and go to state 5
 
 
 State 4
 
-    1 game: point . BREAKLINE
-
-    BREAKLINE  shift, and go to state 9
-
-
-State 5
-
-    2 point: header . BREAKLINE dispute BREAKLINE point
-
-    BREAKLINE  shift, and go to state 10
-
-
-State 6
-
-    4 header: TITULO SPACE . title_line
-
-    WORD  shift, and go to state 11
-
-    title_line  go to state 12
-    title       go to state 13
-
-
-State 7
-
-    3 point: ACAO SPACE . FINALIZAR
-
-    FINALIZAR  shift, and go to state 14
-
-
-State 8
-
-    0 $accept: game $end .
+    0 $accept: player $end .
 
     $default  accept
 
 
+State 5
+
+    1 player: VARIAVEL SPACE WORD . BREAKLINE secondplayer BREAKLINE game
+
+    BREAKLINE  shift, and go to state 6
+
+
+State 6
+
+    1 player: VARIAVEL SPACE WORD BREAKLINE . secondplayer BREAKLINE game
+
+    VARIAVEL  shift, and go to state 7
+
+    secondplayer  go to state 8
+
+
+State 7
+
+    2 secondplayer: VARIAVEL . SPACE WORD BREAKLINE
+
+    SPACE  shift, and go to state 9
+
+
+State 8
+
+    1 player: VARIAVEL SPACE WORD BREAKLINE secondplayer . BREAKLINE game
+
+    BREAKLINE  shift, and go to state 10
+
+
 State 9
 
-    1 game: point BREAKLINE .
+    2 secondplayer: VARIAVEL SPACE . WORD BREAKLINE
 
-    $default  reduce using rule 1 (game)
+    WORD  shift, and go to state 11
 
 
 State 10
 
-    2 point: header BREAKLINE . dispute BREAKLINE point
+    1 player: VARIAVEL SPACE WORD BREAKLINE secondplayer BREAKLINE . game
 
-    ACAO  shift, and go to state 15
+    TITULO  shift, and go to state 12
+    ACAO    shift, and go to state 13
 
-    dispute  go to state 16
+    game    go to state 14
+    point   go to state 15
+    header  go to state 16
 
 
 State 11
 
-    7 title: WORD .
+    2 secondplayer: VARIAVEL SPACE WORD . BREAKLINE
 
-    $default  reduce using rule 7 (title)
+    BREAKLINE  shift, and go to state 17
 
 
 State 12
 
-    4 header: TITULO SPACE title_line .
-    6 title_line: title_line . SPACE title
-
-    SPACE  shift, and go to state 17
-
-    $default  reduce using rule 4 (header)
-
-
-State 13
-
-    5 title_line: title .
-
-    $default  reduce using rule 5 (title_line)
-
-
-State 14
-
-    3 point: ACAO SPACE FINALIZAR .
-
-    $default  reduce using rule 3 (point)
-
-
-State 15
-
-    8 dispute: ACAO . SPACE action
+    6 header: TITULO . SPACE title_line
 
     SPACE  shift, and go to state 18
 
 
+State 13
+
+    5 point: ACAO . SPACE FINALIZAR
+
+    SPACE  shift, and go to state 19
+
+
+State 14
+
+    1 player: VARIAVEL SPACE WORD BREAKLINE secondplayer BREAKLINE game .
+
+    $default  reduce using rule 1 (player)
+
+
+State 15
+
+    3 game: point . BREAKLINE
+
+    BREAKLINE  shift, and go to state 20
+
+
 State 16
 
-    2 point: header BREAKLINE dispute . BREAKLINE point
+    4 point: header . BREAKLINE dispute BREAKLINE point
 
-    BREAKLINE  shift, and go to state 19
+    BREAKLINE  shift, and go to state 21
 
 
 State 17
 
-    6 title_line: title_line SPACE . title
+    2 secondplayer: VARIAVEL SPACE WORD BREAKLINE .
 
-    WORD  shift, and go to state 11
-
-    title  go to state 20
+    $default  reduce using rule 2 (secondplayer)
 
 
 State 18
 
-    8 dispute: ACAO SPACE . action
+    6 header: TITULO SPACE . title_line
 
-    SAQUE         shift, and go to state 21
-    REBATER       shift, and go to state 22
-    CORRER        shift, and go to state 23
-    MARCAR_PONTO  shift, and go to state 24
+    WORD  shift, and go to state 22
 
-    action  go to state 25
+    title_line  go to state 23
+    title       go to state 24
 
 
 State 19
 
-    2 point: header BREAKLINE dispute BREAKLINE . point
+    5 point: ACAO SPACE . FINALIZAR
 
-    TITULO  shift, and go to state 1
-    ACAO    shift, and go to state 2
-
-    point   go to state 26
-    header  go to state 5
+    FINALIZAR  shift, and go to state 25
 
 
 State 20
 
-    6 title_line: title_line SPACE title .
+    3 game: point BREAKLINE .
 
-    $default  reduce using rule 6 (title_line)
+    $default  reduce using rule 3 (game)
 
 
 State 21
 
-    9 action: SAQUE . LEFT_PARENTHESIS TIPO COMMA FORCA RIGHT_PARENTHESIS BREAKLINE dispute
+    4 point: header BREAKLINE . dispute BREAKLINE point
 
-    LEFT_PARENTHESIS  shift, and go to state 27
+    ACAO  shift, and go to state 26
+
+    dispute  go to state 27
 
 
 State 22
 
-   10 action: REBATER . LEFT_PARENTHESIS DIRECAO COMMA FORCA RIGHT_PARENTHESIS BREAKLINE dispute
+    9 title: WORD .
 
-    LEFT_PARENTHESIS  shift, and go to state 28
+    $default  reduce using rule 9 (title)
 
 
 State 23
 
-   11 action: CORRER . LEFT_PARENTHESIS DIRECAO RIGHT_PARENTHESIS BREAKLINE dispute
+    6 header: TITULO SPACE title_line .
+    8 title_line: title_line . SPACE title
 
-    LEFT_PARENTHESIS  shift, and go to state 29
+    SPACE  shift, and go to state 28
+
+    $default  reduce using rule 6 (header)
 
 
 State 24
 
-   12 action: MARCAR_PONTO . BREAKLINE
+    7 title_line: title .
 
-    BREAKLINE  shift, and go to state 30
+    $default  reduce using rule 7 (title_line)
 
 
 State 25
 
-    8 dispute: ACAO SPACE action .
+    5 point: ACAO SPACE FINALIZAR .
 
-    $default  reduce using rule 8 (dispute)
+    $default  reduce using rule 5 (point)
 
 
 State 26
 
-    2 point: header BREAKLINE dispute BREAKLINE point .
+   10 dispute: ACAO . SPACE action
 
-    $default  reduce using rule 2 (point)
+    SPACE  shift, and go to state 29
 
 
 State 27
 
-    9 action: SAQUE LEFT_PARENTHESIS . TIPO COMMA FORCA RIGHT_PARENTHESIS BREAKLINE dispute
+    4 point: header BREAKLINE dispute . BREAKLINE point
 
-    TIPO  shift, and go to state 31
+    BREAKLINE  shift, and go to state 30
 
 
 State 28
 
-   10 action: REBATER LEFT_PARENTHESIS . DIRECAO COMMA FORCA RIGHT_PARENTHESIS BREAKLINE dispute
+    8 title_line: title_line SPACE . title
 
-    DIRECAO  shift, and go to state 32
+    WORD  shift, and go to state 22
+
+    title  go to state 31
 
 
 State 29
 
-   11 action: CORRER LEFT_PARENTHESIS . DIRECAO RIGHT_PARENTHESIS BREAKLINE dispute
+   10 dispute: ACAO SPACE . action
 
-    DIRECAO  shift, and go to state 33
+    SAQUE         shift, and go to state 32
+    REBATER       shift, and go to state 33
+    CORRER        shift, and go to state 34
+    MARCAR_PONTO  shift, and go to state 35
+
+    action  go to state 36
 
 
 State 30
 
-   12 action: MARCAR_PONTO BREAKLINE .
+    4 point: header BREAKLINE dispute BREAKLINE . point
 
-    $default  reduce using rule 12 (action)
+    TITULO  shift, and go to state 12
+    ACAO    shift, and go to state 13
+
+    point   go to state 37
+    header  go to state 16
 
 
 State 31
 
-    9 action: SAQUE LEFT_PARENTHESIS TIPO . COMMA FORCA RIGHT_PARENTHESIS BREAKLINE dispute
+    8 title_line: title_line SPACE title .
 
-    COMMA  shift, and go to state 34
+    $default  reduce using rule 8 (title_line)
 
 
 State 32
 
-   10 action: REBATER LEFT_PARENTHESIS DIRECAO . COMMA FORCA RIGHT_PARENTHESIS BREAKLINE dispute
+   11 action: SAQUE . LEFT_PARENTHESIS TIPO COMMA FORCA RIGHT_PARENTHESIS BREAKLINE dispute
 
-    COMMA  shift, and go to state 35
+    LEFT_PARENTHESIS  shift, and go to state 38
 
 
 State 33
 
-   11 action: CORRER LEFT_PARENTHESIS DIRECAO . RIGHT_PARENTHESIS BREAKLINE dispute
+   12 action: REBATER . LEFT_PARENTHESIS DIRECAO COMMA FORCA RIGHT_PARENTHESIS BREAKLINE dispute
 
-    RIGHT_PARENTHESIS  shift, and go to state 36
+    LEFT_PARENTHESIS  shift, and go to state 39
 
 
 State 34
 
-    9 action: SAQUE LEFT_PARENTHESIS TIPO COMMA . FORCA RIGHT_PARENTHESIS BREAKLINE dispute
+   13 action: CORRER . LEFT_PARENTHESIS DIRECAO RIGHT_PARENTHESIS BREAKLINE dispute
 
-    FORCA  shift, and go to state 37
+    LEFT_PARENTHESIS  shift, and go to state 40
 
 
 State 35
 
-   10 action: REBATER LEFT_PARENTHESIS DIRECAO COMMA . FORCA RIGHT_PARENTHESIS BREAKLINE dispute
+   14 action: MARCAR_PONTO . BREAKLINE
 
-    FORCA  shift, and go to state 38
+    BREAKLINE  shift, and go to state 41
 
 
 State 36
 
-   11 action: CORRER LEFT_PARENTHESIS DIRECAO RIGHT_PARENTHESIS . BREAKLINE dispute
+   10 dispute: ACAO SPACE action .
 
-    BREAKLINE  shift, and go to state 39
+    $default  reduce using rule 10 (dispute)
 
 
 State 37
 
-    9 action: SAQUE LEFT_PARENTHESIS TIPO COMMA FORCA . RIGHT_PARENTHESIS BREAKLINE dispute
+    4 point: header BREAKLINE dispute BREAKLINE point .
 
-    RIGHT_PARENTHESIS  shift, and go to state 40
+    $default  reduce using rule 4 (point)
 
 
 State 38
 
-   10 action: REBATER LEFT_PARENTHESIS DIRECAO COMMA FORCA . RIGHT_PARENTHESIS BREAKLINE dispute
+   11 action: SAQUE LEFT_PARENTHESIS . TIPO COMMA FORCA RIGHT_PARENTHESIS BREAKLINE dispute
 
-    RIGHT_PARENTHESIS  shift, and go to state 41
+    TIPO  shift, and go to state 42
 
 
 State 39
 
-   11 action: CORRER LEFT_PARENTHESIS DIRECAO RIGHT_PARENTHESIS BREAKLINE . dispute
+   12 action: REBATER LEFT_PARENTHESIS . DIRECAO COMMA FORCA RIGHT_PARENTHESIS BREAKLINE dispute
 
-    ACAO  shift, and go to state 15
-
-    dispute  go to state 42
+    DIRECAO  shift, and go to state 43
 
 
 State 40
 
-    9 action: SAQUE LEFT_PARENTHESIS TIPO COMMA FORCA RIGHT_PARENTHESIS . BREAKLINE dispute
+   13 action: CORRER LEFT_PARENTHESIS . DIRECAO RIGHT_PARENTHESIS BREAKLINE dispute
 
-    BREAKLINE  shift, and go to state 43
+    DIRECAO  shift, and go to state 44
 
 
 State 41
 
-   10 action: REBATER LEFT_PARENTHESIS DIRECAO COMMA FORCA RIGHT_PARENTHESIS . BREAKLINE dispute
+   14 action: MARCAR_PONTO BREAKLINE .
 
-    BREAKLINE  shift, and go to state 44
+    $default  reduce using rule 14 (action)
 
 
 State 42
 
-   11 action: CORRER LEFT_PARENTHESIS DIRECAO RIGHT_PARENTHESIS BREAKLINE dispute .
+   11 action: SAQUE LEFT_PARENTHESIS TIPO . COMMA FORCA RIGHT_PARENTHESIS BREAKLINE dispute
 
-    $default  reduce using rule 11 (action)
+    COMMA  shift, and go to state 45
 
 
 State 43
 
-    9 action: SAQUE LEFT_PARENTHESIS TIPO COMMA FORCA RIGHT_PARENTHESIS BREAKLINE . dispute
+   12 action: REBATER LEFT_PARENTHESIS DIRECAO . COMMA FORCA RIGHT_PARENTHESIS BREAKLINE dispute
 
-    ACAO  shift, and go to state 15
-
-    dispute  go to state 45
+    COMMA  shift, and go to state 46
 
 
 State 44
 
-   10 action: REBATER LEFT_PARENTHESIS DIRECAO COMMA FORCA RIGHT_PARENTHESIS BREAKLINE . dispute
+   13 action: CORRER LEFT_PARENTHESIS DIRECAO . RIGHT_PARENTHESIS BREAKLINE dispute
 
-    ACAO  shift, and go to state 15
-
-    dispute  go to state 46
+    RIGHT_PARENTHESIS  shift, and go to state 47
 
 
 State 45
 
-    9 action: SAQUE LEFT_PARENTHESIS TIPO COMMA FORCA RIGHT_PARENTHESIS BREAKLINE dispute .
+   11 action: SAQUE LEFT_PARENTHESIS TIPO COMMA . FORCA RIGHT_PARENTHESIS BREAKLINE dispute
 
-    $default  reduce using rule 9 (action)
+    FORCA  shift, and go to state 48
 
 
 State 46
 
-   10 action: REBATER LEFT_PARENTHESIS DIRECAO COMMA FORCA RIGHT_PARENTHESIS BREAKLINE dispute .
+   12 action: REBATER LEFT_PARENTHESIS DIRECAO COMMA . FORCA RIGHT_PARENTHESIS BREAKLINE dispute
 
-    $default  reduce using rule 10 (action)
+    FORCA  shift, and go to state 49
+
+
+State 47
+
+   13 action: CORRER LEFT_PARENTHESIS DIRECAO RIGHT_PARENTHESIS . BREAKLINE dispute
+
+    BREAKLINE  shift, and go to state 50
+
+
+State 48
+
+   11 action: SAQUE LEFT_PARENTHESIS TIPO COMMA FORCA . RIGHT_PARENTHESIS BREAKLINE dispute
+
+    RIGHT_PARENTHESIS  shift, and go to state 51
+
+
+State 49
+
+   12 action: REBATER LEFT_PARENTHESIS DIRECAO COMMA FORCA . RIGHT_PARENTHESIS BREAKLINE dispute
+
+    RIGHT_PARENTHESIS  shift, and go to state 52
+
+
+State 50
+
+   13 action: CORRER LEFT_PARENTHESIS DIRECAO RIGHT_PARENTHESIS BREAKLINE . dispute
+
+    ACAO  shift, and go to state 26
+
+    dispute  go to state 53
+
+
+State 51
+
+   11 action: SAQUE LEFT_PARENTHESIS TIPO COMMA FORCA RIGHT_PARENTHESIS . BREAKLINE dispute
+
+    BREAKLINE  shift, and go to state 54
+
+
+State 52
+
+   12 action: REBATER LEFT_PARENTHESIS DIRECAO COMMA FORCA RIGHT_PARENTHESIS . BREAKLINE dispute
+
+    BREAKLINE  shift, and go to state 55
+
+
+State 53
+
+   13 action: CORRER LEFT_PARENTHESIS DIRECAO RIGHT_PARENTHESIS BREAKLINE dispute .
+
+    $default  reduce using rule 13 (action)
+
+
+State 54
+
+   11 action: SAQUE LEFT_PARENTHESIS TIPO COMMA FORCA RIGHT_PARENTHESIS BREAKLINE . dispute
+
+    ACAO  shift, and go to state 26
+
+    dispute  go to state 56
+
+
+State 55
+
+   12 action: REBATER LEFT_PARENTHESIS DIRECAO COMMA FORCA RIGHT_PARENTHESIS BREAKLINE . dispute
+
+    ACAO  shift, and go to state 26
+
+    dispute  go to state 57
+
+
+State 56
+
+   11 action: SAQUE LEFT_PARENTHESIS TIPO COMMA FORCA RIGHT_PARENTHESIS BREAKLINE dispute .
+
+    $default  reduce using rule 11 (action)
+
+
+State 57
+
+   12 action: REBATER LEFT_PARENTHESIS DIRECAO COMMA FORCA RIGHT_PARENTHESIS BREAKLINE dispute .
+
+    $default  reduce using rule 12 (action)

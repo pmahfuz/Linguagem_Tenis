@@ -65,7 +65,8 @@ extern int yydebug;
     SPACE = 271,
     COMMA = 272,
     ACAO = 273,
-    FORCA = 274
+    FORCA = 274,
+    VARIAVEL = 275
   };
 #endif
 
