@@ -1,21 +1,28 @@
-& PEDRO
-& FELIPE
+& PEDRO 1
+& FELIPE 2
 
-# Ace e vitoria do jogador sacando
+Inicio_game
+
 % SAQUE(aberto,medio)
-% MARCAR_PONTO
+% MARCAR_PONTO(1)
 
-# Ponto de tres trocas e vitoria do jogador sacando
+% SAQUE(aberto,medio)
+% MARCAR_PONTO(1)
+
 % SAQUE(corpo,forte)
 % CORRER(direita)
 % REBATER(esquerda,forte)
-% MARCAR_PONTO
+% MARCAR_PONTO(1)
 
-# Ponto com quatro trocas e vitoria do jogador recebendo
 % SAQUE(aberto,medio)
 % CORRER(direita)
 % REBATER(esquerda,fraco)
 % CORRER(esquerda)
-% MARCAR_PONTO
+% MARCAR_PONTO(2)
+
+% SAQUE(aberto,medio)
+% MARCAR_PONTO(1)
+
+Fim_game
 
 % FINALIZAR
