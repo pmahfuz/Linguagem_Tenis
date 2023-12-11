@@ -70,9 +70,9 @@ class InicioGame(Node):
         print("MOMENTO RESERVADO PARA PROPAGANDAS")
         print("---------------------------------")
         time.sleep(3)
-        propagandas = ["ROLEX", "FERRARI", "POLO", "TOMMY HILFIGER", "BUDWEISER"]
-        randomNumeber = random.randint(0,5)
-        print(f"{propagandas[randomNumeber]} é muito bom!")
+        propagandas = ["ROLEX", "FERRARI", "POLO", "TOMMY HILFIGER", "BUDWEISER", "NIKE", "ADIDAS", "PUMA", "LACOSTE", "GUCCI", "PRADA", "VERSACE", "LOUIS VUITTON", "APPLE", "SAMSUNG", "SONY", "BOSE", "RED BULL", "COCA-COLA", "PEPSI"]
+        randomNumber = random.randint(0,19)
+        print(f"{propagandas[randomNumber]} é muito bom!")
         print("---------------------------------")
         time.sleep(2)
         input("Pressione ENTER para continuar")
@@ -126,7 +126,10 @@ class Ponto(Node):
         if Player1Score < 41 and Player2Score < 41:
             print(f"Placar do game: {Player1Score} X {Player2Score}")
             print("---------------------------------")
+            time.sleep(1)
         else:
+            Player1Score = 0
+            Player2Score = 0
             print("---------------------------------")
             vencedor = st.getter(id)
             if id == "1":
